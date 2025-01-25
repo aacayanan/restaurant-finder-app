@@ -3,7 +3,7 @@ import React from 'react';
 function Navbar(props) {
     return (
         <div>
-            <div className="flex justify-around items-center border-2 p-4">
+            <div className="flex justify-around items-center p-4">
                 {/* Name Logo */}
                 <div className="h-10 flex items-center gap-4">
                     <div className="w-10 h-10 bg-[#d9d9d9]"></div>
