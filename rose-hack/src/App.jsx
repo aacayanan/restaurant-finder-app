@@ -5,6 +5,7 @@ import RestaurantPage from "./pages/RestaurantPage.jsx"
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
+import FilterCard from "./components/FilterCard.jsx";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<FrontPage/>}/>
                 <Route path="/restaurant" element={<RestaurantPage/>}/>
+                <Route path="/filter" element={<FilterCard/>}/>
             </Routes>
         </Router>
     )
