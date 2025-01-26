@@ -57,7 +57,8 @@ function RestaurantPage(props) {
     };
 
     return (
-        <div className="relative">
+        <div className='bg-gray-100'>
+        <div className='relative flex items-center justify-center max-w-screen-sm bg-white h-screen mx-auto'>
             <div className="max-w-screen-sm relative">
                 <Buffer />
                 <Navbar />
@@ -103,6 +104,7 @@ function RestaurantPage(props) {
                     </div>
                 )}
             </div>
+        </div>
         </div>
     );
 }
