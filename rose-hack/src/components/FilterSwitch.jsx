@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 FilterSwitch.propTypes = {
     label: PropTypes.string.isRequired,
     checked: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
 };
 
-function FilterSwitch({ label, checked }) {
+function FilterSwitch({ label, checked, onChange }) {
     const [isChecked, setIsChecked] = useState(checked);
+
+    useEffect(() => {
+        setIsChecked(checked);
+    }, [checked]);
 
     const handleChange = () => {
         setIsChecked(!isChecked);
+        onChange();
     };
 
     return (

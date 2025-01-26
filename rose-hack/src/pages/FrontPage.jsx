@@ -11,10 +11,12 @@ function FrontPage(props) {
     const [filterStates, setFilterStates] = useState({
         womanOwned: true,
         blackOwned: false,
-        organicOptions: false,
+        localBusiness: false,
         veganOptions: false,
         glutenFreeOptions: false,
     });
+    const [location, setLocation] = useState('');
+    const [hasError, setHasError] = useState(false);
 
     const handleFilterButtonClick = () => {
         setShowFilterCard(true);
@@ -33,13 +35,13 @@ function FrontPage(props) {
                 <div>
                     <img src={FrontPageImage} alt="front page image" className="justify-self-center max-w-screen-sm"/>
                 </div>
-                <SearchBar/>
+                <SearchBar location={location} setLocation={setLocation} hasError={hasError}/>
                 <div className="flex justify-center p-4">
-                    <DualButtons onFilterButtonClick={handleFilterButtonClick}/>
+                    <DualButtons onFilterButtonClick={handleFilterButtonClick} location={location} setLocation={setLocation} setHasError={setHasError}/>
                 </div>
                 {showFilterCard && (
                     <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
-                        <FilterCard filterStates={filterStates} onClose={handleCloseFilterCard} />
+                        <FilterCard filterStates={filterStates} setFilterStates={setFilterStates} onClose={handleCloseFilterCard} />
                     </div>
                 )}
             </div>
