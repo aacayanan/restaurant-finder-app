@@ -5,10 +5,11 @@ import string
 import requests
 from dotenv import find_dotenv, load_dotenv
 
-# Yelp Fusion API requests
+# Global Variable to store JSON after API Request
+yelp_data = {}
 
-def restaurantGeneration():
-    location = "riverside"
+# Yelp Fusion API requests
+def restaurantGeneration(location):
     attributes = []
 
     url = f"https://api.yelp.com/v3/businesses/search?location=" + location + "&term=restaurant"
@@ -42,10 +43,27 @@ def getStartedButtonPress():
 
 @app.route('/api/getText', methods=['POST'])
 def getText():
-    data = request.get_json()
-    text = data.get('text')
+    global yelp_data
+    data = request.get_json()  # Parse the JSON body
+    location = data.get('location', '')  # Extract 'location' from the request
 
-    return None
+    if location:  # Check if location is provided
+        # Pass the location to the restaurantGeneration function
+        result = restaurantGeneration(location)
+        yelp_data = result
+#         print(result)
+        return jsonify({'success': True, 'result': result})
+    else:
+        return jsonify({'success': False, 'error': 'Location is required'}), 400
+
+    return input_value
+
+@app.route('/api/skibidi', methods=['GET'])
+def skibidi():
+    global yelp_data
+    meow = yelp_data["businesses"].pop(0)
+    print(meow)
+    return meow
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)

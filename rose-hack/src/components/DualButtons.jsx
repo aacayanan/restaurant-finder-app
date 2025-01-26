@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import PropTypes from 'prop-types';
+import {useNavigate, useNavigation} from "react-router";
 
 DualButtons.propTypes = {
     onFilterButtonClick: PropTypes.func.isRequired,
@@ -20,13 +21,22 @@ function DualButtons({ onFilterButtonClick, location, setLocation, setHasError }
         }
     };
 
+    const navigate = useNavigate();
     const handleButtonClick = async () => {
         if (location.trim() === '') {
             setHasError(true);
         } else {
             setHasError(false);
             console.log(location); // Log the location state
-            const response = await axios.post("http://localhost:8080/api/getText");
+            try {
+                const response = await axios.post("http://localhost:8080/api/getText", {
+                    location: location // Sending 'location' as the string parameter
+                });
+            } catch (error) {
+                console.error("Error occurred while sending the request:", error);
+            } finally {
+                navigate('/restaurant')
+            }
         }
     };
 
