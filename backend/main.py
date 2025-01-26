@@ -38,6 +38,12 @@ cors = CORS(app, origins='*')
 
 @app.route('/api/getStartedButtonPress', methods=['POST'])
 def getStartedButtonPress():
+    return None
+
+@app.route('/api/getText', methods=['POST'])
+def getText():
+    data = request.get_json()
+    text = data.get('text')
 
     return None
 

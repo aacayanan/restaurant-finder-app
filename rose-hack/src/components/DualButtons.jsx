@@ -20,12 +20,13 @@ function DualButtons({ onFilterButtonClick, location, setLocation, setHasError }
         }
     };
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         if (location.trim() === '') {
             setHasError(true);
         } else {
             setHasError(false);
-            // Handle valid input case
+            console.log(location); // Log the location state
+            const response = await axios.post("http://localhost:8080/api/getText");
         }
     };
 
