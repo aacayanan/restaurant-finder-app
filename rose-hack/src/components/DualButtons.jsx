@@ -1,11 +1,17 @@
 import React from 'react';
 import axios from "axios";
+import PropTypes from 'prop-types';
 
-function DualButtons() {
+DualButtons.propTypes = {
+    onFilterButtonClick: PropTypes.func.isRequired,
+};
+
+function DualButtons({ onFilterButtonClick }) {
     const filterButtonPressed = async () => {
         try {
             const filterStatus = await axios.post("http://localhost:8080/api/linkButtonPress");
-            console.log(filterStatus.data.success)
+            console.log(filterStatus.data.success);
+            onFilterButtonClick();
         } catch (error) {
             console.error("Filter button was never pressed", error);
         }
@@ -14,7 +20,8 @@ function DualButtons() {
     return (
         <div className='flex gap-6'>
             <button
-                className="cursor-pointer text-gray-500 hover:underline">
+                className="cursor-pointer text-gray-500 hover:underline"
+                onClick={onFilterButtonClick}>
                 Filter
             </button>
             <button className="cursor-pointer transition-all bg-[#2c2c2c] text-white px-6 py-2 rounded-lg border-[black]
