@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import PropTypes from 'prop-types';
-import {useNavigate, useNavigation} from "react-router";
+import {useNavigate} from "react-router";
 
 DualButtons.propTypes = {
     onFilterButtonClick: PropTypes.func.isRequired,
@@ -11,6 +11,8 @@ DualButtons.propTypes = {
 };
 
 function DualButtons({ onFilterButtonClick, location, setLocation, setHasError }) {
+    const [filterStates, setFilterStates] = useState({}); // Initialize filterStates
+
     const filterButtonPressed = async () => {
         try {
             const filterStatus = await axios.post("http://localhost:8080/api/linkButtonPress");
@@ -19,6 +21,10 @@ function DualButtons({ onFilterButtonClick, location, setLocation, setHasError }
         } catch (error) {
             console.error("Filter button was never pressed", error);
         }
+    };
+
+    const getTrueAttributes = (states) => {
+        return Object.keys(states).filter(key => states[key]);
     };
 
     const navigate = useNavigate();
@@ -30,7 +36,8 @@ function DualButtons({ onFilterButtonClick, location, setLocation, setHasError }
             console.log(location); // Log the location state
             try {
                 const response = await axios.post("http://localhost:8080/api/getText", {
-                    location: location // Sending 'location' as the string parameter
+                    location: location, // Sending 'location' as the string parameter
+                    attributes: getTrueAttributes(filterStates) // Sending 'attributes' as the array parameter
                 });
             } catch (error) {
                 console.error("Error occurred while sending the request:", error);

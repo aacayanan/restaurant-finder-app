@@ -9,9 +9,7 @@ from dotenv import find_dotenv, load_dotenv
 yelp_data = {}
 
 # Yelp Fusion API requests
-def restaurantGeneration(location):
-    attributes = []
-
+def restaurantGeneration(location, attributes):
     url = f"https://api.yelp.com/v3/businesses/search?location=" + location + "&term=restaurant"
 
     for att in attributes:
@@ -46,16 +44,15 @@ def getText():
     global yelp_data
     data = request.get_json()  # Parse the JSON body
     location = data.get('location', '')  # Extract 'location' from the request
+    attributes = data.get('attributes', [])  # Extract 'attributes' from the request
 
     if location:  # Check if location is provided
-        # Pass the location to the restaurantGeneration function
-        result = restaurantGeneration(location)
+        # Pass the location and attributes to the restaurantGeneration function
+        result = restaurantGeneration(location, attributes)
         yelp_data = result
-#         print(result)
         return jsonify({'success': True, 'result': result})
     else:
         return jsonify({'success': False, 'error': 'Location is required'}), 400
-
     return input_value
 
 @app.route('/api/skibidi', methods=['GET'])
