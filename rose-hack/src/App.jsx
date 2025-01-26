@@ -1,17 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import FrontPage from "./pages/FrontPage.jsx";
+import FrontPage from "./pages/FrontPage.jsx"
+import RestaurantPage from "./pages/RestaurantPage.jsx"
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-        <FrontPage />
-    </>
-  )
+    return (
+        // <>
+        //     <FrontPage/>
+        // </>
+
+        <Router>
+            <Routes>
+                <Route path="/" element={<FrontPage/>}/>
+                <Route path="/restaurant" element={<RestaurantPage/>}/>
+            </Routes>
+        </Router>
+    )
 }
 
 export default App
