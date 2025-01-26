@@ -6,6 +6,15 @@ FinalCard.propTypes = {
 };
 
 function FinalCard({ address }) {
+    const handleGetDirections = () => {
+        if (address) {
+            const encodedAddress = encodeURIComponent(address);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+        } else {
+            alert('Error: Address not provided');
+        }
+    };
+
     return (
         <div className='bg-black/30 min-h-screen flex flex-col justify-end w-full border-2'>
             <div className='bg-white p-4 rounded-3xl w-full'>
@@ -23,7 +32,10 @@ function FinalCard({ address }) {
                             </div>
                         </div>
                     </div>
-                    <button className='bg-[#2c2c2c] text-white p-4 rounded-3xl'>
+                    <button
+                        className='bg-[#2c2c2c] text-white p-4 rounded-3xl'
+                        onClick={handleGetDirections}
+                    >
                         Get Directions
                     </button>
                 </div>
