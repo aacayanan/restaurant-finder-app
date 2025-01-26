@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../assets/findherlogo.webp';
+import Logo from '../assets/findherrestaurantlogo.webp';
 
 function Navbar(props) {
     return (
@@ -7,11 +7,11 @@ function Navbar(props) {
             <div className="flex justify-around items-center p-4">
                 {/* Name Logo */}
                 <div className="h-10 flex items-center gap-4">
-                    <div className="w-10 h-10 bg-[#d9d9d9] overflow-hidden relative">
+                    <div className="w-12 h-12 overflow-hidden relative">
                         <img
                             src={Logo}
                             alt="logo"
-                            className="absolute w-auto h-auto left-1/2 top-1/2 transform scale-150 -translate-x-1/2 -translate-y-1/2"
+                            className="absolute w-auto h-auto left-1/2 top-1/2 transform scale-120 -translate-x-1/2 -translate-y-1/2 rounded-full"
                         />
                     </div>
                     <div className="text-black text-2xl font-medium">FindHer Restaurant</div>
