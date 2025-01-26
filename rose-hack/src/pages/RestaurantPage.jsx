@@ -18,6 +18,7 @@ function RestaurantPage(props) {
     const [price, setPrice] = useState(0);
     const [restaurantName, setRestaurantName] = useState("Loading...");
     const [address, setAddress] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
     const [showFinalCard, setShowFinalCard] = useState(false);
 
     useEffect(() => {
@@ -32,6 +33,7 @@ function RestaurantPage(props) {
                 setPrice(response.data.price.length || 0);
                 setRestaurantName(response.data.name || "Loading");
                 setAddress(response.data.location.display_address || "");
+                setIsOpen(response.data.is_open || false); // Update isOpen state
             } catch (error) {
                 console.error("Error fetching yelp_data:", error);
             } finally {
@@ -55,20 +57,31 @@ function RestaurantPage(props) {
     };
 
     return (
-        <div className='relative'>
-            <div className='max-w-screen-sm relative'>
-                <Buffer/>
-                <Navbar/>
-                <div className='flex justify-center p-8'>
+        <div className="relative">
+            <div className="max-w-screen-sm relative">
+                <Buffer />
+                <Navbar />
+                <div className="flex justify-center p-8">
                     <div className="w-screen h-80">
-                        <img src={imageSrc} alt='restaurant-img' className='w-full h-full object-cover rounded-2xl border-2 border-black'/>
+                        <img
+                            src={imageSrc}
+                            alt="restaurant-img"
+                            className="w-full h-full object-cover rounded-2xl border-2 border-black"
+                        />
                     </div>
                 </div>
-                <div className='p-4'>
+                <div className="p-4">
                     <div className="border p-4 rounded-lg shadow-md flex items-center justify-between">
                         <div>
                             <h1 className="text-xl font-bold">{restaurantName}</h1>
-                            <p className="text-green-600">{"OPEN MEOW MEOW MEOW"}</p>
+                            {/* Display pending, open, or closed status */}
+                            {loading ? (
+                                <p className="text-yellow-600">Pending...</p>
+                            ) : (
+                                <p className={isOpen ? "text-green-600" : "text-red-600"}>
+                                    {isOpen ? "Open" : "Closed"}
+                                </p>
+                            )}
                             <div className="flex space-x-1 text-xl mt-2">
                                 {renderStars(rating)}
                             </div>
@@ -81,17 +94,19 @@ function RestaurantPage(props) {
                         </div>
                     </div>
                 </div>
-                <div className='p-8'>
-                    <ChoiceButtons address={address} onCheckClick={() => setShowFinalCard(true)}/>
+                <div className="p-8">
+                    <ChoiceButtons address={address} onCheckClick={() => setShowFinalCard(true)} />
                 </div>
                 {showFinalCard && (
                     <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
-                        <FinalCard address={address}/>
+                        <FinalCard address={address} />
                     </div>
                 )}
             </div>
         </div>
     );
 }
+
+
 
 export default RestaurantPage;

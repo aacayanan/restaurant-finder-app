@@ -37,7 +37,7 @@ function FrontPage(props) {
                 </div>
                 <SearchBar location={location} setLocation={setLocation} hasError={hasError}/>
                 <div className="flex justify-center p-4">
-                    <DualButtons onFilterButtonClick={handleFilterButtonClick} location={location} setLocation={setLocation} setHasError={setHasError}/>
+                    <DualButtons onFilterButtonClick={handleFilterButtonClick} location={location} setLocation={setLocation} setHasError={setHasError} states={filterStates}/>
                 </div>
                 {showFilterCard && (
                     <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
