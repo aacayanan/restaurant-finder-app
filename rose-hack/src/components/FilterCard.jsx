@@ -12,7 +12,7 @@ function FilterCard(props) {
                     Filter Search
                 </div>
                 <div className='flex flex-col justify-center p-2'>
-                    <FilterSwitch label="Woman-Owned" checked={true}/>
+                    <FilterSwitch label="Woman-Owned" checked={true} id='categories=woman-owned'/>
                     <FilterSwitch label="Black-Owned" checked={false}/>
                     <FilterSwitch label="Organic Options" checked={false}/>
                     <FilterSwitch label="Vegan Options" checked={false}/>
