@@ -19,9 +19,6 @@ function SearchBar(props) {
                        className="justify-self-center outline-none"/>
                 <LucideMapPin/>
             </div>
-            <div className="p-4">
-                <DualButtons />
-            </div>
         </div>
     );
 }
