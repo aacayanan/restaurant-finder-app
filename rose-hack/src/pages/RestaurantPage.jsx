@@ -31,7 +31,7 @@ function RestaurantPage(props) {
                 setRating(Number(response.data.rating) || 0);
                 setPrice(response.data.price.length || 0);
                 setRestaurantName(response.data.name || "Loading");
-                setAddress(response.data.address || "");
+                setAddress(response.data.location.display_address || "");
             } catch (error) {
                 console.error("Error fetching yelp_data:", error);
             } finally {
