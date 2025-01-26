@@ -1,6 +1,7 @@
 import React from 'react';
 import {LucideMapPin} from "lucide-react";
 import PropTypes from 'prop-types';
+import DualButtons from "./DualButtons.jsx";
 
 SearchBar.propTypes = {
 
@@ -17,6 +18,9 @@ function SearchBar(props) {
                 <input type="text" placeholder="Enter Location"
                        className="justify-self-center outline-none"/>
                 <LucideMapPin/>
+            </div>
+            <div className="p-4">
+                <DualButtons />
             </div>
         </div>
     );

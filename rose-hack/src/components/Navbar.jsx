@@ -11,17 +11,22 @@ function Navbar(props) {
                 </div>
 
                 {/* Dropdown Menu */}
-                <button className="relative w-10 h-8 cursor-pointer">
-                    {/* First Bar */}
-                    <span className="absolute h-1 w-full bg-black rounded-lg top-0"></span>
-                    {/* Second Bar */}
-                    <span className="absolute h-1 w-full bg-black rounded-lg top-1/2 -translate-y-1/2"></span>
-                    {/* Third Bar */}
-                    <span className="absolute h-1 w-full bg-black rounded-lg top-full -translate-y-full"></span>
-                </button>
+                <div className='bg-white'>
+                    <a href='https://www.youtube.com/watch?v=xvFZjo5PgG0'>
+                        <button className="relative w-10 h-8 cursor-pointer">
+                            {/* First Bar */}
+                            <span className="absolute h-1 w-full bg-black rounded-lg top-0"></span>
+                            {/* Second Bar */}
+                            <span className="absolute h-1 w-full bg-black rounded-lg top-1/2 -translate-y-1/2"></span>
+                            {/* Third Bar */}
+                            <span className="absolute h-1 w-full bg-black rounded-lg top-full -translate-y-full"></span>
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
-    );
+    )
+        ;
 }
 
 export default Navbar;
