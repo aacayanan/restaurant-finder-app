@@ -5,11 +5,10 @@ import Navbar from "../components/Navbar.jsx";
 import ImageLoading from "../assets/placeholder-image.png";
 import RestaurantInfo from "../components/RestaurantInfo.jsx";
 import ChoiceButtons from "../components/ChoiceButtons.jsx";
+import FinalCard from "../components/FinalCard.jsx";
 import axios from "axios";
 
-RestaurantPage.propTypes = {
-
-};
+RestaurantPage.propTypes = {};
 
 function RestaurantPage(props) {
     const [imageSrc, setImageSrc] = useState(ImageLoading);
@@ -18,9 +17,10 @@ function RestaurantPage(props) {
     const [rating, setRating] = useState(0);
     const [price, setPrice] = useState(0);
     const [restaurantName, setRestaurantName] = useState("Loading...");
+    const [address, setAddress] = useState("");
+    const [showFinalCard, setShowFinalCard] = useState(false);
 
     useEffect(() => {
-        // Make the GET request to fetch yelp_data
         const fetchData = async () => {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1000)); // Fake loading delay
@@ -28,9 +28,10 @@ function RestaurantPage(props) {
                 console.log(response);
                 setRestaurantData(response.data); // Update state with restaurant data
                 setImageSrc(response.data.image_url || ImageLoading); // Update image source
-                setRating(Number(response.data.rating) || 0)
-                setPrice(response.data.price.length || 0)
-                setRestaurantName(response.data.name || "Loading")
+                setRating(Number(response.data.rating) || 0);
+                setPrice(response.data.price.length || 0);
+                setRestaurantName(response.data.name || "Loading");
+                setAddress(response.data.address || "");
             } catch (error) {
                 console.error("Error fetching yelp_data:", error);
             } finally {
@@ -46,27 +47,24 @@ function RestaurantPage(props) {
         for (let i = 1; i <= 5; i++) {
             stars.push(
                 <span key={i} className={i <= count ? "text-yellow-500" : "text-gray-300"}>
-          ★
-        </span>
+                    ★
+                </span>
             );
         }
         return stars;
     };
 
     return (
-        <div className=''>
-            <div className='max-w-screen-sm'>
+        <div className='relative'>
+            <div className='max-w-screen-sm relative'>
                 <Buffer/>
                 <Navbar/>
-                {/* image component */}
                 <div className='flex justify-center p-8'>
                     <div className="w-screen h-80">
                         <img src={imageSrc} alt='restaurant-img' className='w-full h-full object-cover rounded-2xl border-2 border-black'/>
                     </div>
                 </div>
                 <div className='p-4'>
-                    {/*restaurant info*/}
-                    {/*<RestaurantInfo/>*/}
                     <div className="border p-4 rounded-lg shadow-md flex items-center justify-between">
                         <div>
                             <h1 className="text-xl font-bold">{restaurantName}</h1>
@@ -84,8 +82,13 @@ function RestaurantPage(props) {
                     </div>
                 </div>
                 <div className='p-8'>
-                    <ChoiceButtons/>
+                    <ChoiceButtons address={address} onCheckClick={() => setShowFinalCard(true)}/>
                 </div>
+                {showFinalCard && (
+                    <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
+                        <FinalCard address={address}/>
+                    </div>
+                )}
             </div>
         </div>
     );

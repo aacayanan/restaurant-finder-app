@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { CircleX, CircleCheck } from 'lucide-react';
 import {useNavigate} from "react-router";
 
-ChoiceButtons.propTypes = {};
+ChoiceButtons.propTypes = {
+    address: PropTypes.string,
+    onCheckClick: PropTypes.func.isRequired,
+};
 
-
-function ChoiceButtons(props) {
+function ChoiceButtons({ address, onCheckClick }) {
     const navigate = useNavigate();
     const handleXClick = () => {
         navigate(0);
@@ -17,7 +19,7 @@ function ChoiceButtons(props) {
                 <CircleX strokeWidth={1} className="w-20 h-20" onClick={handleXClick}/>
             </button>
             <button>
-                <CircleCheck strokeWidth={1} className="w-20 h-20"/>
+                <CircleCheck strokeWidth={1} className="w-20 h-20" onClick={onCheckClick}/>
             </button>
         </div>
     );

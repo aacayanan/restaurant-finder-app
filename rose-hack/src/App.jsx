@@ -6,6 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import FilterCard from "./components/FilterCard.jsx";
+import FinalCard from "./components/FinalCard.jsx";
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<FrontPage/>}/>
                 <Route path="/restaurant" element={<RestaurantPage/>}/>
-                <Route path="/filter" element={<FilterCard/>}/>
+                <Route path="/final" element={<FinalCard/>}/>
             </Routes>
         </Router>
     )
