@@ -4,6 +4,7 @@ import Buffer from "../components/Buffer.jsx";
 import Navbar from "../components/Navbar.jsx";
 import ImageLoading from "../assets/placeholder-image.png";
 import RestaurantInfo from "../components/RestaurantInfo.jsx";
+import ChoiceButtons from "../components/ChoiceButtons.jsx";
 
 RestaurantPage.propTypes = {
 
@@ -17,14 +18,17 @@ function RestaurantPage(props) {
             <div className='max-w-screen-sm'>
                 <Buffer/>
                 <Navbar/>
-                {/*image component*/}
+                {/* image component */}
                 <div className='flex justify-center p-8'>
-                    <div>
-                        <img src={imageSrc} alt='restaurant-img' className='rounded-2xl min-w-sm max-w-sm border-2 border-black max-h-full'/>
+                    <div className="w-screen h-80">
+                        <img src={imageSrc} alt='restaurant-img' className='w-full h-full object-cover rounded-2xl border-2 border-black'/>
                     </div>
                 </div>
                 <div className='p-4'>
                     <RestaurantInfo/>
+                </div>
+                <div className='p-8'>
+                    <ChoiceButtons/>
                 </div>
             </div>
         </div>
