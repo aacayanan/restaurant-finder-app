@@ -13,7 +13,7 @@ DualButtons.propTypes = {
 function DualButtons({ onFilterButtonClick, location, setLocation, setHasError, states }) {
     const filterButtonPressed = async () => {
         try {
-            const filterStatus = await axios.post("http://localhost:8080/api/linkButtonPress");
+            const filterStatus = await axios.post("https://findherrestaurant.pages.dev/api/linkButtonPress");
             console.log(filterStatus.data.success);
             onFilterButtonClick();
         } catch (error) {
@@ -33,7 +33,7 @@ function DualButtons({ onFilterButtonClick, location, setLocation, setHasError, 
             setHasError(false);
             console.log(location); // Log the location state
             try {
-                const response = await axios.post("http://localhost:8080/api/getText", {
+                const response = await axios.post("https://findherrestaurant.pages.dev/api/getText", {
                     location: location, // Sending 'location' as the string parameter
                     attributes: states,
                 });
