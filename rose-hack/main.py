@@ -68,5 +68,9 @@ def skibidi():
 #     print(meow)
     return meow
 
+@app.route('/api/mtest', methods=['POST'])
+def mtest():
+    return "This is a test from the main.py file"
+
 if __name__ == '__main__':
     app.run(debug=True, port=8080)

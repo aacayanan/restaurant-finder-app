@@ -28,3 +28,7 @@ def search(location, category):
 	response = requests.get(url, headers=headers)
 	print(response.text)
 	return "Working so far."
+
+@app.route('/api/atest', methods=['POST'])
+def mtest():
+    return "This is a test from the app.py file"
