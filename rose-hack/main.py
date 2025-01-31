@@ -41,7 +41,7 @@ cors = CORS(app, origins='*')
 def getStartedButtonPress():
     return None
 
-@app.route('/api/getText', methods=['POST'])
+@app.route('/api/getText', methods=['PUT'])
 def getText():
     global yelp_data
     data = request.get_json()  # Parse the JSON body
