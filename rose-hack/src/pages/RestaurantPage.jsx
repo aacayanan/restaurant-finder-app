@@ -63,7 +63,7 @@ function RestaurantPage(props) {
                 <Buffer />
                 <Navbar />
                 <div className="flex justify-center p-8">
-                    <div className="w-screen h-80">
+                    <div className="w-96 h-80">
                         <img
                             src={imageSrc}
                             alt="restaurant-img"
