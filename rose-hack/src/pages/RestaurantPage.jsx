@@ -28,12 +28,12 @@ function RestaurantPage(props) {
                 const response = await axios.get("https://aaroncayanan.com/findher/api/skibidi");
                 console.log(response);
                 setRestaurantData(response.data); // Update state with restaurant data
+                setRestaurantName(response.data.name || "Loading");
                 setImageSrc(response.data.image_url || ImageLoading); // Update image source
                 setRating(Number(response.data.rating) || 0);
                 setPrice(response.data.price.length || 0);
-                setRestaurantName(response.data.name || "Loading");
                 setAddress(response.data.location.display_address || "");
-                setIsOpen(response.data.is_open || false); // Update isOpen state
+                setIsOpen(response.data.business_hours[0].is_open_now || false); // Update isOpen state
             } catch (error) {
                 console.error("Error fetching yelp_data:", error);
             } finally {
