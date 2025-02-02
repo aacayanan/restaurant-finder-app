@@ -14,18 +14,16 @@ application = app
 
 # Yelp Fusion API requests
 def restaurantGeneration(location, attributes):
-    print(attributes)
     url = f"https://api.yelp.com/v3/businesses/search?location=" + location + "&term=restaurant"
 
     for att in attributes:
         url += f"&categories={att}"
-        print(url)
 
     url += f"&limit=10"
 
     dotenv_path = find_dotenv()
     load_dotenv(dotenv_path)
-    auth_key = str(os.getenv("YELP_API_KEY"))
+    auth_key = os.getenv("YELP_API_KEY")
 
     headers = {
         "accept": "application/json",
@@ -55,9 +53,8 @@ def getText():
         # Pass the location and filtered attributes to the restaurantGeneration function
         result = restaurantGeneration(location, attributes)
         yelp_data = result
-        return jsonify({'success': True, 'result': result})
     else:
-        return jsonify({'success': False, 'error': 'Location is required'}), 400
+        print("Error: No location passed.")
 
 
 
@@ -68,9 +65,16 @@ def skibidi():
 #     print(meow)
     return meow
 
+
 @app.route('/mtest')
 def mtest():
-    return "This is a test from the main.py file"
+    return "meow"
+
+
+@app.route('/')
+def root_route():
+    return "Root Route"
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
