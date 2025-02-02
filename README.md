@@ -24,12 +24,14 @@ npm run dev
 
 Lastly, start the backend server after installing the libraries.
 ```
-pip install dotenv flask flask-cors requests
+cd rose-hack
+pip install -r requirements.txt
 python main.py
 ```
 On mac:
 ```
-pip install dotenv flask flask-cors requests
+cd rose-hack
+pip install -r requirements.txt
 python3 main.py
 ```
 ## How we built it
