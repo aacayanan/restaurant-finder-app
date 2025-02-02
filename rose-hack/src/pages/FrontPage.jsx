@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Navbar from "../components/Navbar.jsx";
 import Buffer from "../components/Buffer.jsx";
 import FrontPageImage from '../assets/rosehacknontransparent.png';
@@ -29,24 +29,30 @@ function FrontPage(props) {
 
     return (
         <div className='bg-gray-100'>
-        <div className='relative flex items-center justify-center max-w-screen-sm bg-white h-screen mx-auto'>
-            <div className='max-w-screen-sm relative'>
-                <Buffer/>
-                <Navbar/>
-                <div>
-                    <img src={FrontPageImage} alt="front page image" className="justify-self-center max-w-screen-sm"/>
-                </div>
-                <SearchBar location={location} setLocation={setLocation} hasError={hasError}/>
-                <div className="flex justify-center p-4">
-                    <DualButtons onFilterButtonClick={handleFilterButtonClick} location={location} setLocation={setLocation} setHasError={setHasError} states={filterStates}/>
-                </div>
-                {showFilterCard && (
-                    <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
-                        <FilterCard filterStates={filterStates} setFilterStates={setFilterStates} onClose={handleCloseFilterCard} />
+            <div className='relative flex items-center justify-center max-w-screen-sm bg-white h-screen mx-auto'>
+                <div className='max-w-screen-sm relative'>
+                    <Buffer/>
+                    <Navbar/>
+                    <div>
+                        <img src={FrontPageImage} alt="front page image"
+                             className="justify-self-center max-w-screen-sm"/>
                     </div>
-                )}
+                    <SearchBar location={location} setLocation={setLocation} hasError={hasError}/>
+                    <div className="flex justify-center p-4">
+                        <DualButtons onFilterButtonClick={handleFilterButtonClick} location={location}
+                                     setLocation={setLocation} setHasError={setHasError} states={filterStates}/>
+                    </div>
+                    {showFilterCard && (
+                        <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
+                            <FilterCard filterStates={filterStates} setFilterStates={setFilterStates}
+                                        onClose={handleCloseFilterCard}/>
+                        </div>
+                    )}
+                    <div className='text-xs flex justify-center font-extralight'>
+                        app is currently in development, some features may not work as expected
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     );
 }
