@@ -41,7 +41,7 @@ def restaurantGeneration(location, attributes):
 def getStartedButtonPress():
     return None
 
-@app.route('/getText', methods=['PUT'])
+@app.route('/getText', methods=['POST'])
 def getText():
     global yelp_data
     data = request.get_json()  # Parse the JSON body
