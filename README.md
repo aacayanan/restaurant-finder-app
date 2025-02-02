@@ -24,11 +24,13 @@ npm run dev
 
 Lastly, start the backend server after installing the libraries.
 ```
+cd rose-hack
 pip install -r requirements.txt
 python main.py
 ```
 On mac:
 ```
+cd rose-hack
 pip install -r requirements.txt
 python3 main.py
 ```
