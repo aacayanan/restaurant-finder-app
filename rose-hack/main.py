@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
-import string
 import requests
 from dotenv import find_dotenv, load_dotenv
 
 # Global Variable to store JSON after API Request
 yelp_data = {}
+
+# Localhost ports and request handling
+app = Flask(__name__)
+cors = CORS(app, origins='*')
+application = app
 
 # Yelp Fusion API requests
 def restaurantGeneration(location, attributes):
@@ -32,16 +36,12 @@ def restaurantGeneration(location, attributes):
 
     return response.json()
 
-# Localhost ports and request handling
 
-app = Flask(__name__)
-cors = CORS(app, origins='*')
-
-@app.route('/api/getStartedButtonPress', methods=['POST'])
+@app.route('/getStartedButtonPress', methods=['POST'])
 def getStartedButtonPress():
     return None
 
-@app.route('/api/getText', methods=['PUT'])
+@app.route('/getText', methods=['PUT'])
 def getText():
     global yelp_data
     data = request.get_json()  # Parse the JSON body
@@ -61,14 +61,14 @@ def getText():
 
 
 
-@app.route('/api/skibidi', methods=['GET'])
+@app.route('/skibidi', methods=['GET'])
 def skibidi():
     global yelp_data
     meow = yelp_data["businesses"].pop(0)
 #     print(meow)
     return meow
 
-@app.route('/api/mtest', methods=['POST'])
+@app.route('/mtest')
 def mtest():
     return "This is a test from the main.py file"
 
