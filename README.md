@@ -22,7 +22,7 @@ npm install
 npm run dev
 ```
 
-Lastly, start the backend server after installing the libraries.
+Lastly, open a new terminal and start the backend server after installing the libraries.
 ```
 cd rose-hack
 pip install -r requirements.txt
