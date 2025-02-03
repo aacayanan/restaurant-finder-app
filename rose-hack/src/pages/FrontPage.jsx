@@ -49,7 +49,7 @@ function FrontPage(props) {
                         </div>
                     )}
                     <div className='text-xs flex justify-center font-extralight'>
-                        app is currently in development, some features may not work as expected
+                        *if there are no restaurants that match your filters, we will show you restaurants in your area
                     </div>
                 </div>
             </div>
