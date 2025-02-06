@@ -19,7 +19,7 @@ def restaurantGeneration(location, attributes):
     for att in attributes:
         url += f"&categories={att}"
 
-    url += f"&limit=10"
+    url += f"&limit=10&offset=10"
 
     dotenv_path = find_dotenv()
     load_dotenv(dotenv_path)
@@ -31,7 +31,7 @@ def restaurantGeneration(location, attributes):
     }
 
     response = requests.get(url, headers=headers)
-
+    print(url)
     return response.json()
 
 

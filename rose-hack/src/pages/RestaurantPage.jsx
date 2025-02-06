@@ -25,7 +25,7 @@ function RestaurantPage(props) {
         const fetchData = async () => {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1000)); // Fake loading delay
-                const response = await axios.get("https://aaroncayanan.com/findher/api/skibidi");
+                const response = await axios.get("http://127.0.0.1:8080/skibidi");
                 console.log(response);
                 setRestaurantData(response.data); // Update state with restaurant data
                 setRestaurantName(response.data.name || "Loading");
