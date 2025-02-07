@@ -7,6 +7,7 @@ import RestaurantInfo from "../components/RestaurantInfo.jsx";
 import ChoiceButtons from "../components/ChoiceButtons.jsx";
 import FinalCard from "../components/FinalCard.jsx";
 import axios from "axios";
+import EndSearchCard from "../components/EndSearchCard.jsx";
 
 RestaurantPage.propTypes = {};
 
@@ -20,13 +21,13 @@ function RestaurantPage(props) {
     const [address, setAddress] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [showFinalCard, setShowFinalCard] = useState(false);
+    const [showEndSearchCard, setShowEndSearchCard] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1000)); // Fake loading delay
-                const response = await axios.get("https://aaroncayanan.com/findher/api/skibidi");
-                console.log(response);
+                const response = await axios.get("http://localhost:8080/skibidi");
                 setRestaurantData(response.data); // Update state with restaurant data
                 setRestaurantName(response.data.name || "Loading");
                 setImageSrc(response.data.image_url || ImageLoading); // Update image source
@@ -35,7 +36,13 @@ function RestaurantPage(props) {
                 setAddress(response.data.location.display_address || "");
                 setIsOpen(response.data.business_hours[0].is_open_now || false); // Update isOpen state
             } catch (error) {
-                console.error("Error fetching yelp_data:", error);
+                if (error.response.status === 500) {
+                    console.error('Internal server error (500)');
+                    setShowEndSearchCard(true);
+                }
+                else{
+                    console.log("Some other error then 500: " + error);
+                }
             } finally {
                 setLoading(false);
             }
@@ -101,6 +108,11 @@ function RestaurantPage(props) {
                 {showFinalCard && (
                     <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
                         <FinalCard address={address} />
+                    </div>
+                )}
+                {showEndSearchCard && (
+                    <div className="absolute inset-0 bg-white bg-opacity-75 flex justify-center items-center">
+                        <EndSearchCard/>
                     </div>
                 )}
             </div>

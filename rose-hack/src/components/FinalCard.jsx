@@ -34,8 +34,7 @@ function FinalCard({ address }) {
                     </div>
                     <button
                         className='bg-[#2c2c2c] text-white p-4 rounded-3xl'
-                        onClick={handleGetDirections}
-                    >
+                        onClick={handleGetDirections}>
                         Get Directions
                     </button>
                 </div>
