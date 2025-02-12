@@ -23,8 +23,6 @@ def restaurantGeneration(location, attributes):
         print(att)
         url += f"&categories={att}"
 
-    url += f"&limit=10&offset=10"
-
     if (offset > 0):
         url += f"&offset={10 * offset}"
 
