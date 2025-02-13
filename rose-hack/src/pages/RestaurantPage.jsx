@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import PropTypes from 'prop-types';
 import Buffer from "../components/Buffer.jsx";
 import Navbar from "../components/Navbar.jsx";
 import ImageLoading from "../assets/placeholder-image.png";
-import RestaurantInfo from "../components/RestaurantInfo.jsx";
 import ChoiceButtons from "../components/ChoiceButtons.jsx";
 import FinalCard from "../components/FinalCard.jsx";
 import axios from "axios";
@@ -13,7 +11,6 @@ RestaurantPage.propTypes = {};
 
 function RestaurantPage(props) {
     const [imageSrc, setImageSrc] = useState(ImageLoading);
-    const [restaurantData, setRestaurantData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [rating, setRating] = useState(0);
     const [price, setPrice] = useState(0);
@@ -28,7 +25,6 @@ function RestaurantPage(props) {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 1000)); // Fake loading delay
                 const response = await axios.get("http://localhost:8080/skibidi");
-                setRestaurantData(response.data); // Update state with restaurant data
                 setRestaurantName(response.data.name || "Loading");
                 setImageSrc(response.data.image_url || ImageLoading); // Update image source
                 setRating(Number(response.data.rating) || 0);
