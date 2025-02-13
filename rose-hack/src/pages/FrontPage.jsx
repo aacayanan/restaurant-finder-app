@@ -9,11 +9,11 @@ import FilterCard from "../components/FilterCard.jsx";
 function FrontPage(props) {
     const [showFilterCard, setShowFilterCard] = useState(false);
     const [filterStates, setFilterStates] = useState({
-        womanOwned: true,
-        blackOwned: false,
-        localBusiness: false,
-        veganOptions: false,
-        glutenFreeOptions: false,
+        sandwiches: true,
+        salad: false,
+        diners: false,
+        cafes: false,
+        bubbleTea: false,
     });
     const [location, setLocation] = useState('');
     const [hasError, setHasError] = useState(false);

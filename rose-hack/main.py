@@ -17,11 +17,13 @@ application = app
 
 # Yelp Fusion API requests
 def restaurantGeneration(location, attributes):
-    url = f"https://api.yelp.com/v3/businesses/search?location=" + location + "&term=fastfood"
+    url = f"https://api.yelp.com/v3/businesses/search?location=" + location + "&term=restaurants"
 
     for att in attributes:
         print(att)
-        url += f"&categories={att}"
+        url += f"&categories={att.lower()}"
+
+    url += f"&sort_by=best_match&limit=10"
 
     if (offset > 0):
         url += f"&offset={10 * offset}"
