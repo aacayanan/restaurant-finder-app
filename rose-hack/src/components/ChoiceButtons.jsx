@@ -16,10 +16,10 @@ function ChoiceButtons({ address, onCheckClick }) {
     return (
         <div className='flex justify-self-center space-x-28'>
             <button>
-                <CircleX strokeWidth={1} className="w-20 h-20" onClick={handleXClick}/>
+                <CircleX strokeWidth={1} className="w-20 h-20 hover:opacity-60" onClick={handleXClick}/>
             </button>
             <button>
-                <CircleCheck strokeWidth={1} className="w-20 h-20" onClick={onCheckClick}/>
+                <CircleCheck strokeWidth={1} className="w-20 h-20 hover:opacity-60" onClick={onCheckClick}/>
             </button>
         </div>
     );

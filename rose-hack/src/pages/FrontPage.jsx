@@ -29,7 +29,7 @@ function FrontPage(props) {
 
     return (
         <div className='bg-gray-100'>
-            <div className='relative flex items-center justify-center max-w-screen-sm bg-white h-screen mx-auto'>
+            <div className='relative flex items-center justify-center max-w-min bg-white h-screen mx-auto'>
                 <div className='max-w-screen-sm relative'>
                     <Buffer/>
                     <Navbar/>

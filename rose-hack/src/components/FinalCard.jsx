@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 
 FinalCard.propTypes = {
     address: PropTypes.string,
+    onExit: PropTypes.func.isRequired,
 };
 
-function FinalCard({ address }) {
+function FinalCard({ address, onExit }) {
     const handleGetDirections = () => {
         if (address) {
             const encodedAddress = encodeURIComponent(address);
@@ -18,8 +19,15 @@ function FinalCard({ address }) {
     return (
         <div className='bg-black/30 min-h-screen flex flex-col justify-end w-full border-2'>
             <div className='bg-white p-4 rounded-3xl w-full'>
-                <div className='flex justify-center font-semibold pb-4'>
-                    Details
+                <div className='flex justify-between flex-row-reverse'>
+                    <div className='font-extralight opacity-50 flex justify-end px-4'>
+                        <button className='hover:opacity-40' onClick={onExit}>
+                            Exit
+                        </button>
+                    </div>
+                    <div className='flex justify-center font-semibold p-3'>
+                        More Options:
+                    </div>
                 </div>
                 <div className="flex justify-between items-center">
                     <div className="flex flex-col">
@@ -33,7 +41,7 @@ function FinalCard({ address }) {
                         </div>
                     </div>
                     <button
-                        className='bg-[#2c2c2c] text-white p-4 rounded-3xl'
+                        className='bg-[#2c2c2c] text-white p-4 rounded-3xl hover:opacity-90'
                         onClick={handleGetDirections}>
                         Get Directions
                     </button>

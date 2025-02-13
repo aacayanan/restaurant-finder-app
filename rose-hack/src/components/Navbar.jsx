@@ -4,7 +4,7 @@ import Logo from '../assets/findherrestaurantlogo.webp';
 function Navbar(props) {
     return (
         <div>
-            <div className="flex justify-around items-center p-4">
+            <div className="flex justify-around items-center">
                 {/* Name Logo */}
                 <div className="h-10 flex items-center gap-4">
                     <div className="w-12 h-12 overflow-hidden relative">
@@ -14,7 +14,7 @@ function Navbar(props) {
                             className="absolute w-auto h-auto left-1/2 top-1/2 transform scale-120 -translate-x-1/2 -translate-y-1/2 rounded-full"
                         />
                     </div>
-                    <div className="text-black text-2xl font-medium">FindHer Restaurant</div>
+                    <div className="text-black text-2xl font-medium">Munch.</div>
                 </div>
 
                 {/* Dropdown Menu */}
